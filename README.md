@@ -1,3 +1,18 @@
+
+# green-gamma-astro-tailwind
+
+## 10.18.2024
+
+1. Too hard to refactor astro-tailwindcss-verdaccio already in github.
+1. npm create astro@latest
+1. selected blog
+1. Pending add tailwind
+1. npx astro add tailwind
+1. Selected defaults
+
+
+
+
 # Astro Starter Kit: Blog
 
 ```sh
