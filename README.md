@@ -1,6 +1,71 @@
 
 # green-gamma-astro-tailwind
 
+## 10.20.2024
+
+1. Rebase by Flavio Copes
+1. add file commit -am 'm1'
+1. add second file commit -am 'm2'
+1. git checkout -b feature
+1. create file commit -am 'f1'
+1. second file commit -am 'f2'
+1. git checkout main
+1. create file git commit -am 'm3'
+1. create second file git commit -am 'm4'
+1. git log -all --oneline --graph
+1. git rebase feature onto main
+1. if something wrong do git reset --hard ORIG_HEAD
+1. I did git reset --merge ORIG_HEAD
+1. It went back but it messed the merge by mixing the f1 and f2 into secondmain
+when i should've been only m1m2m3m4
+1. Now it looks correct: output is m1m2m3m4f1 and text.txt is m1m2m3m4f1f2
+1. f2 was not a problem because it was done after m4, which I still do not understand.
+1. The question is: merge or rebase?
+1. Flavio's answer: ***first rebase the branch you want to merge on the branch you want to merge into, then merge***
+1. on the command line:
+```sh 
+git checkout feature
+git rebase main
+open text.txt file to solve the conflict
+put f1 after m3m4
+save the file
+git add test.txt
+git rebase --continue
+in commit message type f1 as that is the commit that generated the conflict
+if something goes wrong
+git reset --hard ORIG_HEAD
+to restore the pre-rebase state
+restart the rebase from scratch
+```
+1. When you rebase your feature based on latest main, you are moving the base of your feature to the end of main branch. Feaure's commits are reapplied to the end of main commits one by one.
+1. switch to main and do merge to feature (that was rebased) this is ***fast-forward merge***. This is because the commits in main are already rebased in feature branch, so Git update the HEAD of main to point to the commit that feature branch is on, just move a pointer keeping the clean history, of course if the repo has not been pushed yet to github. 
+1. In case when the history has changed in github, this to do rebase is risky.
+1. Because feature's history appears as direct continuation of main history, no need to mark the new commit as ***merge commit***.
+1. The benefit: **linear history**
+1. Rebase rewrites the history. So only for changes that have not been pushed or shared with others yet. 
+
+
+## 10.18.2024
+
+1. Create private key
+1. git config --global uaser.name and user.email are at ~/.gitconfig
+1. ssh-keygen -t ed25519 -C "local1905@canva.ed"
+1. selected default values
+1. id_ed25519 changed to id_25519-local1905
+1. Edit ~/.ssh/config file
+```
+Host github.com
+   User nelsonlopezjimenez
+   IdentityFile ~/.ssh/id_ed25519-local1905
+```
+1. login into github with nelson.lopezjimenez@seattlecolleges.edu and password Dineroux2 ar rorboa oldd add ressth
+1. 2 factor auth using my phone
+1. cloned astro-tailwindcss-verdaccio
+1. npm install with verdaccio 5.11 
+1. 
+
+
+
 ## 10.18.2024
 
 1. Too hard to refactor astro-tailwindcss-verdaccio already in github.
